@@ -1,0 +1,52 @@
+# vim:ft=plumed
+
+phi1: TORSION ATOMS=5,7,9,15
+phi2: TORSION ATOMS=15,17,19,25
+phi3: TORSION ATOMS=25,27,29,35
+psi1: TORSION ATOMS=7,9,15,17
+psi2: TORSION ATOMS=17,19,25,27
+psi3: TORSION ATOMS=27,29,35,37
+ene: ENERGY
+
+metad: PBMETAD ...
+  ARG=psi1,psi2,psi3
+  FILE=HILLS1.__REP__,HILLS2.__REP__,HILLS3.__REP__
+  PACE=500
+  HEIGHT=12
+  SIGMA=0.35,0.35,0.35
+  BIASFACTOR=20
+  GRID_MIN=-pi,-pi,-pi
+  GRID_MAX=pi,pi,pi
+  GRID_BIN=100,100,100
+...
+
+PRINT FMT=%g STRIDE=500 FILE=COLVAR.__REP__ ARG=*
+
+ENDPLUMED
+
+run with:
+../queue_gromacs.sh 0
+
+All combinations of the following:
+
+- good CVs
+  ARG=phi1,phi2,phi3
+- bad CVs
+  ARG=psi1,psi2,psi3
+
+- standard parameters
+  HEIGHT=1.2
+- aggressive parameters
+  HEIGHT=12
+
+- well-tempered
+  BIASFACTOR=20
+- non-tempered
+  # BIASFACTOR=20
+
+- standard sigma
+  SIGMA=0.35,0.35,0.35
+- adaptive sigma
+  ADAPTIVE=DIFF
+  SIGMA=500
+  SIGMA_MIN=0.1,0.1,0.1
