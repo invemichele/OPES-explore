@@ -1,0 +1,21 @@
+# vim:ft=plumed
+
+phi: TORSION ATOMS=5,7,9,15
+psi: TORSION ATOMS=7,9,15,17
+
+opes: OPES_METAD ...
+  ARG=phi,psi
+  PACE=500
+  BARRIER=30
+  NLIST
+  STATE_WFILE=STATE
+  STATE_WSTRIDE=500*100
+  STORE_STATES
+...
+
+PRINT FMT=%g STRIDE=500 FILE=COLVAR ARG=phi,psi,opes.*
+
+ENDPLUMED
+
+run with:
+../queue_gromacs.sh
