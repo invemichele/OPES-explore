@@ -27,7 +27,7 @@ PRINT FMT=%g STRIDE=500 FILE=COLVAR.__REP__ ARG=*
 ENDPLUMED
 
 run with:
-../queue_gromacs.sh 0
+../queue_gromacs.i.sh $i
 
 All combinations of the following:
 
