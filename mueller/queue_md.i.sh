@@ -1,16 +1,15 @@
 #!/bin/bash
 
-[ $# -eq 1 ] && rep=$1
+[ $# -eq 1 ] || echo "rep missing!"
+[ $# -eq 1 ] || exit
+rep=$1
 
 # Job Settings
 jname=${PWD: -7}
 ncore=1
 max_t=12:00 #h:min
 outfile=log.out
-
-#to run locally
 host=$HOSTNAME
-# [ $# -eq 1 ] && host=$1
 
 # Commands
 mpi_cmd="plumed ves_md_linearexpansion ../../inputs/input_md.${rep}.dat"
@@ -18,7 +17,7 @@ mpi_cmd="plumed ves_md_linearexpansion ../../inputs/input_md.${rep}.dat"
 extra_cmd=""
 
 # Prepare Submission
-bck.meup.sh -i $outfile
+../bck.meup.sh -i $outfile
 #bck.meup.sh -v $logfile |& tee -a $outfile
 ### if euler ###
 if [ ${host:0:3} == "eu-" ]

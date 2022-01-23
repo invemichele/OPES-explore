@@ -1,12 +1,5 @@
 #!/bin/bash
 
-#[ $# -eq 1 ] || echo "rep missing!"
-#[ $# -eq 1 ] || exit
-#rep=$1
-
-rep=""
-[ $# -eq 1 ] && rep=".${1}"
-
 # phi3-phi2-phi1 state
 # 000  1
 # 001  2
@@ -19,7 +12,7 @@ rep=""
 
 #bck="bck.0."
 bck=""
-bck.meup.sh -i states$rep.data
+../bck.meup.sh -i states.data
 awk 'BEGIN{phi1=0;phi2=0;phi3=0;state=1;counter=0;print "#time state counter"}
      NR>20{
        if(phi1==1){if($2>-2.2 && $2<-1.8) phi1=0;}
@@ -33,4 +26,4 @@ awk 'BEGIN{phi1=0;phi2=0;phi3=0;state=1;counter=0;print "#time state counter"}
 
        state=phi1+2*phi2+4*phi3+1;
        if(count[state]==0){count[state]++;counter++;}
-       print $1,state,counter;}' ${bck}COLVAR$rep > states$rep.data
+       print $1,state,counter;}' ${bck}COLVAR > states.data

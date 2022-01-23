@@ -8,10 +8,6 @@ rep=$1
 jname=${PWD##*/}-${rep}
 ncore=1
 max_t=4:00 #h:min
-#singleton="-d singleton"
-singleton=""
-
-#to run locally
 host=$HOSTNAME
 
 # Commands
@@ -32,12 +28,12 @@ optWalkers=""
 #  optWalkers=""
 #fi
 Project=${Filename}${WalkerPrefix}
-Run_file=../inputs/${Inputname}${WalkerPrefix}.tpr
+Run_file=../../inputs/${Inputname}${WalkerPrefix}.tpr
 outfile=${Filename}${WalkerPrefix}.out
 max_h=`python <<< "print('%g'%(${max_t%:*}+${max_t#*:}/60-0.05))"`
 
 # Prepare Submission
-bck.meup.sh -i $outfile
+../bck.meup.sh -i $outfile
 res=""
 #cpt_files=`ls ${Project}*.cpt |wc -l`
 #if [ $cpt_files -gt 0 ]
@@ -47,14 +43,11 @@ res=""
 #else
 #  bck.meup.sh -i ${Project}* > $outfile
 #fi
-bck.meup.sh -i ${Project}* > $outfile
-sed "s/__REP__/$rep/g" plumed.dat > plumed.$rep.dat
+../bck.meup.sh -i ${Project}* > $outfile
+#sed "s/__REP__/$rep/g" plumed.dat > plumed.$rep.dat
 
-#mpi_cmd="$exe -maxh $max_h -s $Run_file -deffnm $Project $optWalkers $nsteps -ntomp 1"
-mpi_cmd="$exe -plumed plumed.$rep.dat -maxh $max_h -s $Run_file -deffnm $Project $optWalkers $nsteps -ntomp 1 $res"
-#extra_cmd="$0"
-#extra_cmd="../analyze-50.sh"
-extra_cmd="../get_ala4_state.sh $rep"
+mpi_cmd="$exe -plumed ../plumed.dat -maxh $max_h -s $Run_file -deffnm $Project $optWalkers $nsteps -ntomp 1 $res"
+extra_cmd="../../get_ala4_state.sh"
 
 ### if euler ###
 if [ ${host:0:3} == "eu-" ]

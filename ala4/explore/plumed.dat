@@ -10,18 +10,18 @@ ene: ENERGY
 
 opes: OPES_METAD ...
   ARG=psi1,psi2,psi3
-  FILE=KERNELS.__REP__
   PACE=500
   BARRIER=70
   NLIST
 ...
 
-PRINT FMT=%g STRIDE=500 FILE=COLVAR.__REP__ ARG=*
+PRINT FMT=%g STRIDE=500 FILE=COLVAR ARG=*
 
 ENDPLUMED
 
 run with:
-../queue_gromacs.i.sh $i
+mkdir $i;cd $i
+../../queue_gromacs.i.sh $i
 
 All combinations of the following:
 
