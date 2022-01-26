@@ -11,7 +11,7 @@ ene: ENERGY
 metad: PBMETAD ...
   ARG=psi1,psi2,psi3
   PACE=500
-  HEIGHT=12
+  HEIGHT=1.2
   SIGMA=0.35,0.35,0.35
   BIASFACTOR=20
   GRID_MIN=-pi,-pi,-pi
