@@ -37,8 +37,8 @@ mpi_cmd="$exe -plumed plumed.dat -maxh $max_h -s $Run_file -deffnm $Project $opt
 extra_cmd=""
 
 # Prepare Submission
-../bck.meup.sh -i $outfile
-../bck.meup.sh -i ${Filename}* > $outfile
+../../bck.meup.sh -i $outfile
+../../bck.meup.sh -i ${Filename}* > $outfile
 ### if euler ###
 if [ ${host:0:3} == "eu-" ]
 then

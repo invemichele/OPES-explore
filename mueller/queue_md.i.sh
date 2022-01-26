@@ -17,7 +17,7 @@ mpi_cmd="plumed ves_md_linearexpansion ../../inputs/input_md.${rep}.dat"
 extra_cmd=""
 
 # Prepare Submission
-../bck.meup.sh -i $outfile
+../../../bck.meup.sh -i $outfile
 #bck.meup.sh -v $logfile |& tee -a $outfile
 ### if euler ###
 if [ ${host:0:3} == "eu-" ]
