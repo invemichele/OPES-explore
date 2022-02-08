@@ -16,10 +16,10 @@ do
   rm fes_400.dat
   bck.meup.sh -i rew_running
   mkdir rew_running
-  ../../FES_from_Reweighting.py --kt 1 -s 0.01 --bias metad.rbias --min -1.3 --max 1 --stride 1000 -f ${bck}COLVAR -o rew_running/
+  ../../../postprocessing/FES_from_Reweighting.py --kt 1 -s 0.01 --bias metad.rbias --min -1.3 --max 1 --stride 1000 -f ${bck}COLVAR -o rew_running/
 #  bck.meup.sh -i Rev-rew_running
 #  mkdir Rev-rew_running
-#  ../../FES_from_Reweighting.py --kt 1 -s 0.01 --bias metad.rbias --min -1.3 --max 1 --stride 1000 -f ${bck}COLVAR --reverse -o Rev-rew_running/
+#  ../../../postprocessing/FES_from_Reweighting.py --kt 1 -s 0.01 --bias metad.rbias --min -1.3 --max 1 --stride 1000 -f ${bck}COLVAR --reverse -o Rev-rew_running/
   bck.meup.sh -i Last-rew_running
   mkdir Last-rew_running
   ../../Last_Bias_Reweighting.py --kt 1 -s 0.01 --bias NO --min -1.3 --max 1 --stride 1000 -f ${bck}COLVAR -o Last-rew_running/ --last-file auto
