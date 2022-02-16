@@ -23,3 +23,4 @@ done
 # to get the FES from the instantaneous bias, the STATE file is needed
 # add the following keywords to opes:
 #  STATE_WFILE=STATE STATE_WSTRIDE=500*1000 STORE_STATES
+# or use the State_from_Kernels.py script on a properly shortened KERNELS file
