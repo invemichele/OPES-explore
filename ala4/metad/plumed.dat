@@ -9,10 +9,15 @@ psi3: TORSION ATOMS=27,29,35,37
 ene: ENERGY
 
 metad: METAD ...
+  #ARG=phi1,phi2,phi3
   ARG=psi1,psi2,psi3
   PACE=500
   HEIGHT=1.2
+  #HEIGHT=12
   SIGMA=0.35,0.35,0.35
+  #ADAPTIVE=DIFF
+  #SIGMA=500
+  #SIGMA_MIN=0.1,0.1,0.1
   BIASFACTOR=20
   GRID_MIN=-pi,-pi,-pi
   GRID_MAX=pi,pi,pi
@@ -25,9 +30,13 @@ PRINT FMT=%g STRIDE=500 FILE=COLVAR ARG=*
 
 ENDPLUMED
 
+for i in {0..9};do mkdir phi-std-$i phi-agr-$i psi-std-$i psi-agr-$i;done
+for d in `ls -d p*`;do mkdir nonT-$d ada-$d;done
+
 run with:
-mkdir $i;cd $i
+cd ${dir}-$i
 ../../queue_gromacs.i.sh $i
+
 
 All combinations of the following:
 
