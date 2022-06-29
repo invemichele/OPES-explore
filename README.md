@@ -5,3 +5,5 @@ This repository contains all the input files and data related to https://pubs.ac
 Software used is PLUMED v2.8 (with [OPES module](https://www.plumed.org/doc-master/user-doc/html/_o_p_e_s.html) enabled) and GROMACS 2019
 
 *** a Jupyter notebook for recreating the figures is available in each folder ***
+
+[ See also this interesting [discussion](https://github.com/jhenin/Methods-for-enhanced-sampling-and-free-energy-calculations/issues/5#issuecomment-1070769732) related to the topic of the paper  ]
