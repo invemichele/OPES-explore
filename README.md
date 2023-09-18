@@ -7,3 +7,6 @@ Software used is PLUMED v2.8 (with [OPES module](https://www.plumed.org/doc-mast
 *** a Jupyter notebook for recreating the figures is available in each folder ***
 
 [ See also this interesting [discussion](https://github.com/jhenin/Methods-for-enhanced-sampling-and-free-energy-calculations/issues/5#issuecomment-1070769732) related to the topic of the paper  ]
+
+## Tutorial
+For a more recent introduction to the OPES method see this [PLUMED masterclass](https://www.plumed.org/doc-master/user-doc/html/masterclass-22-03.html) (git repo [here](https://github.com/invemichele/masterclass-22-03/tree/master)).
